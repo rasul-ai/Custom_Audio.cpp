@@ -1,0 +1,16 @@
+build/linux-cuda-release/bin/audiocpp_cli --task asr --family nemotron_asr \
+  --model models/OmniVoice-GGUF/omnivoice-f16.gguf \
+  --backend cuda --mode streaming --audio ref.wav --language bn \
+  --request-option lookahead_tokens=13 --log --text-out bn.txt 2>&1 | grep session.wall_ms
+
+
+build/linux-cuda-release/bin/audiocpp_cli --task tts --family omnivoice \
+  --model models/OmniVoice-GGUF/omnivoice-f16.gguf \
+  --backend cuda \
+  --language bn \
+  --text "আমি এটা বিশ্বাসই করতে পারছি না! আমরা সত্যিই এটা করে ফেলেছি! এত কিছু ভুল হওয়ার পর, সত্যি বলতে আমি ভাবিনি যে আমরা এতদূর পর্যন্ত আসতে পারব। এই কাজটি কখনো হাল ছেড়ে না দেওয়ার জন্য আপনাদেরকে সবাইকে আন্তরিক ধন্যবাদ।" \
+  --out bn_tts.wav
+
+
+/home/admin_noeticx/llm_models/nemo_asr/mch_best_e72.nemo
+
